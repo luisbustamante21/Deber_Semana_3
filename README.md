@@ -65,13 +65,11 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 
 ## 4. Análisis Comparativo entre Modelos
 
-| Modelo   | Reducción Dimensional | Parámetros Clave                  | N° Clusters     | Silhouette Score | Observaciones Clave                                                      |
-|----------|------------------------|-----------------------------------|------------------|------------------|--------------------------------------------------------------------------|
-| K-Means  | PCA                    | `k = 3`                           | 3                | ~0.32            | Clusters bien separados. Requiere definir número de clusters.           |
-| DBSCAN   | PCA                    | `eps = 0.25`, `min_samples = 5`   | 2 + ruido        | ~0.23*           | Capta ruido y formas no convexas. Sensible a los parámetros.            |
-| t-SNE    | No aplica              | `perplexity = 30`, `learning_rate = 200` | n/a       | n/a              | No realiza clustering, pero mejora la visualización de agrupaciones.    |
-
-> *Silhouette Score aproximado calculado solo para puntos no etiquetados como ruido.
+| Modelo   | Reducción Dimensional | Parámetros Clave                  | N° Clusters       | Observaciones Clave                                                     |
+|----------|------------------------|-----------------------------------|------------------|-------------------------------------------------------------------------|
+| K-Means  | PCA                    | `k = 3`                           | 3                | Clusters bien separados. Requiere definir número de clusters.           |
+| DBSCAN   | PCA                    | `eps = 0.25`, `min_samples = 5`   | n/a        | Capta ruido y formas no convexas. Sensible a los parámetros.            |
+| t-SNE    | No aplica              | `perplexity = 30`, `learning_rate = 200` | n/a       | No realiza clustering, pero mejora la visualización de agrupaciones.    |
 
 ---
 
