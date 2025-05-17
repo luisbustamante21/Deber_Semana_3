@@ -7,96 +7,121 @@
 Proyecto de análisis no supervisado para segmentar clientes de tarjetas de crédito mediante técnicas de clustering.
 
 ## 📌 Tabla de Contenidos
-1. [Justificación y Análisis](#-1-justificación-y-análisis)
-2. [Problema](#-2-introducción-del-problema)
-3. [Metodología](#-3-metodología-y-técnicas-aplicadas)
-4. [Resultados](#-4-análisis-comparativo-entre-modelos)
-5. [Conclusiones](#-5-conclusiones-y-recomendaciones)
-6. [Entorno](#-6-entorno-de-trabajo)
+1. [Justificación y Análisis](#1-justificación-y-análisis)  
+2. [Introducción del Problema](#2-introducción-del-problema)  
+3. [Metodología y Técnicas Aplicadas](#3-metodología-y-técnicas-aplicadas)  
+4. [Análisis Comparativo entre Modelos](#4-análisis-comparativo-entre-modelos)  
+5. [Conclusiones](#conclusiones)  
+6. [Recomendaciones](#recomendaciones)  
+7. [Estructura del Proyecto](#estructura-del-proyecto)  
+8. [Tecnologías Utilizadas](#tecnologías-utilizadas)  
+9. [Autor](#autor)  
+10. [Entorno de Trabajo](#entorno-de-trabajo)
 
 ---
 
-## 1️⃣ Justificación y Análisis
-El objetivo principal es desarrollar un sistema de segmentación basado en el comportamiento de uso de tarjetas de crédito para:
+# 📊 Segmentación de Clientes de Tarjeta de Crédito
 
-- Identificar grupos homogéneos según:
-  - Nivel de gasto
-  - Frecuencia de compras 
-  - Uso de adelantos en efectivo
-- Optimizar estrategias de marketing
-- Gestionar riesgos crediticios
+## 1. Justificación y Análisis
 
-**Dataset utilizado**:  
-`Credit Card Dataset for Clustering` con ~9,000 titulares activos y 18 variables comportamentales.
+Este proyecto aplica técnicas de **aprendizaje no supervisado** para segmentar clientes de tarjetas de crédito, con el objetivo de:
 
----
+- Diseñar estrategias de marketing personalizadas.
+- Identificar perfiles de riesgo.
+- Optimizar la asignación de límites de crédito y promociones.
 
-## 2️⃣ Introducción del Problema
-Los emisores de tarjetas necesitan segmentación para:
-
-✅ Mejorar retención de clientes  
-✅ Reducir costos de adquisición  
-✅ Ajustar límites de crédito según riesgo  
-
-**Retos principales**:
-- Extraer segmentos accionables sin supervisión
-- Manejar variables con distintas escalas
+Se utilizó un dataset con información de aproximadamente **9,000 clientes activos** durante los últimos seis meses, incluyendo 18 variables que describen su comportamiento financiero: saldo promedio, frecuencia de compras, adelantos en efectivo, pagos mínimos y totales, entre otros.
 
 ---
 
-## 3️⃣ Metodología y Técnicas Aplicadas
+## 2. Introducción del Problema
 
-### 🔧 Preprocesamiento
-- Imputación de valores faltantes
-- Tratamiento de outliers
-- Escalado de variables (`StandardScaler`/`MinMaxScaler`)
-- EDA y análisis de correlaciones
+Las instituciones financieras necesitan segmentar su base de clientes para:
 
-### 📉 Reducción de Dimensionalidad
-- PCA para visualización y reducción de ruido
+- Enfocar estrategias de **retención y fidelización**.
+- **Reducir el riesgo crediticio** adaptando condiciones según perfiles.
+- **Mejorar la eficiencia** comercial y operativa.
 
-### 🧩 Modelos de Clustering
-| Modelo  | Enfoque | Parámetros Clave |
-|---------|---------|------------------|
-| K-Means | Partición | n_clusters=3 |
-| t-SNE   | Reducción no lineal | `perplexity=30`, `learning_rate=200` |
-| DBSCAN  | Densidad | `eps=0.25`, `min_samples=5` |
-
-### 📊 Validación
-- **Silhouette Score**: Cohesión y separación de clusters
+Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clustering** para identificar grupos de clientes con comportamientos similares.
 
 ---
 
-## 4️⃣ Análisis Comparativo entre Modelos
+## 3. Metodología y Técnicas Aplicadas
 
-| Modelo  | Silhouette | DB Index | Ventajas | Desventajas |
-|---------|------------|----------|----------|-------------|
-| K-Means | 0.32       | 0.85     | Rápido e interpretable | Sensible a outliers |
-| t-SNE*  | 0.30       | 0.88     | Captura no-linealidades | Requiere clustering adicional |
-| DBSCAN  | 0.25       | 1.10     | Detecta ruido | Difícil calibrar `eps` |
+### 📌 1. Preprocesamiento de Datos
+- Eliminación de valores nulos y variables irrelevantes.
+- Escalado de variables con `StandardScaler`.
+- Análisis exploratorio de distribuciones y correlaciones.
 
-*_t-SNE con clustering posterior_
+### 📌 2. Reducción de Dimensionalidad
+- **PCA (Principal Component Analysis)**: Reducción a dos componentes principales para facilitar visualización y uso de DBSCAN.
+- **t-SNE (t-distributed Stochastic Neighbor Embedding)**: Técnica no lineal para mejorar la visualización de agrupaciones de K-Means.
+
+### 📌 3. Modelos de Clustering Aplicados
+- **K-Means**: Se evaluaron valores de *k* entre 2 y 4. Se seleccionó **k = 3** como óptimo utilizando el Silhouette Score.
+- **DBSCAN**: Aplicado sobre los datos reducidos por PCA. Detecta grupos de forma libre y puntos de ruido sin necesidad de fijar *k*.
+
+---
+
+## 4. Análisis Comparativo entre Modelos
+
+| Modelo   | Reducción Dimensional | Parámetros Clave                  | N° Clusters     | Silhouette Score | Observaciones Clave                                                      |
+|----------|------------------------|-----------------------------------|------------------|------------------|--------------------------------------------------------------------------|
+| K-Means  | PCA                    | `k = 3`                           | 3                | ~0.32            | Clusters bien separados. Requiere definir número de clusters.           |
+| DBSCAN   | PCA                    | `eps = 0.25`, `min_samples = 5`   | 2 + ruido        | ~0.23*           | Capta ruido y formas no convexas. Sensible a los parámetros.            |
+| t-SNE    | No aplica              | `perplexity = 30`, `learning_rate = 200` | n/a       | n/a              | No realiza clustering, pero mejora la visualización de agrupaciones.    |
+
+> *Silhouette Score aproximado calculado solo para puntos no etiquetados como ruido.
 
 ---
 
-## 5️⃣ Conclusiones y Recomendaciones
+## 🧾 Conclusiones
 
-### 🎯 Segmentos Identificados
-1. Alto gasto + pagos completos
-2. Uso moderado + pagos mínimos
-3. Alto uso de cash advance
-4. Bajo uso + pagos irregulares
-
-### 💡 Recomendaciones
-- **Marketing**: Promociones segmentadas (ej: recompensas por cash advance)
-- **Riesgo**: Revisar límites para segmento 3
-- **Monitoreo**: Reevaluar trimestralmente con nuevos datos
+- **K-Means (k=3)** fue el modelo más efectivo y fácil de interpretar para segmentación general.
+- **DBSCAN** mostró potencial para detectar **outliers** y grupos no lineales, pero fue más sensible a la elección de parámetros.
+- **t-SNE** no se utilizó para clustering directamente, pero fue muy útil para validar visualmente los grupos generados.
 
 ---
+
+## ✅ Recomendaciones
+
+- Usar **DBSCAN** en análisis enfocados en detección de anomalías o cuando no se desea definir el número de clusters.
+- Complementar **t-SNE** con otras técnicas visuales en presentaciones ejecutivas o para validar agrupaciones.
+- Considerar aplicar esta metodología a otras líneas de productos financieros o campañas de marketing.
+
+---
+
+## 📂 Estructura del Proyecto
+
+├── data/ # Dataset de clientes
+├── notebooks/ # Análisis exploratorio y clustering
+├── src/ # Funciones y módulos auxiliares
+├── visualizations/ # Gráficos generados con PCA y t-SNE
+└── README.md
+
+
+---
+
+## 📌 Tecnologías Utilizadas
+
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- Matplotlib, Seaborn
+- Jupyter Notebook
+
+---
+
+## ✍️ Autor
+
+**Luis Bustamante**  
+
+---
+
 
 ## 6️⃣ Entorno de Trabajo
 ```yaml
-Sistema Operativo: Ubuntu 20.04 LTS
+Sistema Operativo: Windows 11
 Python: 3.8.12
 Librerías Principales:
   - pandas 1.3.5
