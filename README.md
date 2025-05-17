@@ -17,6 +17,7 @@ Proyecto de análisis no supervisado para segmentar clientes de tarjetas de cré
 8. [Tecnologías Utilizadas](#-tecnologias-utilizadas)  
 9. [Autor](#-autor)  
 10. [Entorno de Trabajo](#6️⃣-entorno-de-trabajo)
+11. [Links de Interés](#-links-de-interés)
 
 ---
 
@@ -155,7 +156,6 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 
 ---
 
-
 ## 6️⃣ Entorno de Trabajo
 ```yaml
 Sistema Operativo: Windows 11
@@ -167,3 +167,10 @@ Librerías Principales:
 Herramientas:
   - Jupyter Notebook 6.4.7
   - Git 2.25.1
+
+
+---
+
+## 🔗 Links de Interés
+
+- 🎯 **Presentación de Diapositivas**: [Google Slides](https://docs.google.com/presentation/d/1OVkkPnO7M1RX9RnqtcDdVlekxcDUIeMl/edit?usp=sharing&ouid=105746497042844411325&rtpof=true&sd=true)
