@@ -58,9 +58,9 @@ Los emisores de tarjetas necesitan segmentación para:
 ### 🧩 Modelos de Clustering
 | Modelo  | Enfoque | Parámetros Clave |
 |---------|---------|------------------|
-| K-Means | Partición | k ∈ [2,8] (eval. por Inercia/Silhouette) |
+| K-Means | Partición | n_clusters=3 |
 | t-SNE   | Reducción no lineal | `perplexity=30`, `learning_rate=200` |
-| DBSCAN  | Densidad | `eps=0.5`, `min_samples=5` |
+| DBSCAN  | Densidad | `eps=0.25`, `min_samples=5` |
 
 ### 📊 Validación
 - **Silhouette Score**: Cohesión y separación de clusters
