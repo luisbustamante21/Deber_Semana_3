@@ -7,16 +7,16 @@
 Proyecto de análisis no supervisado para segmentar clientes de tarjetas de crédito mediante técnicas de clustering.
 
 ## 📌 Tabla de Contenidos
-1. [Justificación y Análisis](#1-justificación-y-análisis)  
-2. [Introducción del Problema](#2-introducción-del-problema)  
-3. [Metodología y Técnicas Aplicadas](#3-metodología-y-técnicas-aplicadas)  
-4. [Análisis Comparativo entre Modelos](#4-análisis-comparativo-entre-modelos)  
-5. [Conclusiones](#conclusiones)  
-6. [Recomendaciones](#recomendaciones)  
-7. [Estructura del Proyecto](#estructura-del-proyecto)  
-8. [Tecnologías Utilizadas](#tecnologías-utilizadas)  
-9. [Autor](#autor)  
-10. [Entorno de Trabajo](#entorno-de-trabajo)
+1. [Justificación y Análisis](#1-justificacion-y-analisis)  
+2. [Introducción del Problema](#2-introduccion-del-problema)  
+3. [Metodología y Técnicas Aplicadas](#3-metodologia-y-tecnicas-aplicadas)  
+4. [Análisis Comparativo entre Modelos](#4-analisis-comparativo-entre-modelos)  
+5. [Conclusiones](#-conclusiones)  
+6. [Recomendaciones](#-recomendaciones)  
+7. [Estructura del Proyecto](#-estructura-del-proyecto)  
+8. [Tecnologías Utilizadas](#-tecnologias-utilizadas)  
+9. [Autor](#-autor)  
+10. [Entorno de Trabajo](#6️⃣-entorno-de-trabajo)
 
 ---
 
