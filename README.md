@@ -64,7 +64,6 @@ Los emisores de tarjetas necesitan segmentación para:
 
 ### 📊 Validación
 - **Silhouette Score**: Cohesión y separación de clusters
-- **Davies-Bouldin Index**: Calidad de particionamiento
 
 ---
 
