@@ -77,17 +77,57 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 
 ## 🧾 Conclusiones
 
-- **K-Means (k=3)** fue el modelo más efectivo y fácil de interpretar para segmentación general.
-- **DBSCAN** mostró potencial para detectar **outliers** y grupos no lineales, pero fue más sensible a la elección de parámetros.
-- **t-SNE** no se utilizó para clustering directamente, pero fue muy útil para validar visualmente los grupos generados.
+**Segmentación clara de clientes:**
+
+- El uso de KMeans permitió identificar 3 clusters bien diferenciados de clientes, basados en su comportamiento financiero.
+- Estas agrupaciones fueron validadas visualmente mediante PCA y t-SNE, mostrando separación adecuada.
+  
+**Patrones diferenciados por grupo:**
+
+- Un grupo mostraba bajo uso de la tarjeta, bajos pagos y poco saldo.
+- Otro grupo tenía uso moderado, con pagos regulares y saldos manejables.
+- El tercer grupo representaba clientes con alto nivel de gasto, mayores compras, pagos y balances altos.
+
+**Transformación logarítmica efectiva:**
+
+- Las variables financieras, al tener una distribución sesgada, se beneficiaron significativamente de la transformación logarítmica.
+- Esto mejoró la visualización y la calidad del agrupamiento.
+
+**DBSCAN no fue ideal:**
+
+- Aunque se probó DBSCAN como método alternativo, no generó una segmentación útil en este caso, posiblemente por la dispersión de los datos y la falta de densidad homogénea.
+
+**Relación entre antigüedad y gasto:**
+
+- Se observó que clientes con mayor antigüedad (tenure) tienden a tener mayores niveles de compras promedio, aunque esto depende del cluster.
 
 ---
 
 ## ✅ Recomendaciones
 
-- Usar **DBSCAN** en análisis enfocados en detección de anomalías o cuando no se desea definir el número de clusters.
 - Complementar **t-SNE** con otras técnicas visuales en presentaciones ejecutivas o para validar agrupaciones.
-- Considerar aplicar esta metodología a otras líneas de productos financieros o campañas de marketing.
+  
+**Diseñar estrategias personalizadas por cluster:**
+
+- Cluster de usuarios inactivos o de bajo gasto: enviar promociones, aumentar límites o fomentar el uso mediante recompensas.
+- Cluster de usuarios intermedios: ofrecer upgrades o productos complementarios.
+- Cluster de alto gasto y saldo alto: monitorear riesgo crediticio y ofrecer planes premium o exclusivos.
+
+**Implementar monitoreo continuo:**
+
+- Estos clusters deben actualizarse periódicamente. Los hábitos de los clientes pueden cambiar por contexto económico, cambios personales o por incentivos.
+
+**Integrar este análisis con sistemas CRM:**
+
+- Usar los resultados para alimentar sistemas de marketing, fidelización y gestión de riesgo.
+
+**Ampliar el modelo con nuevas variables:**
+
+- Incluir variables sociodemográficas, canal de contacto, historial de mora, etc., puede enriquecer aún más el análisis.
+
+** Optimizar la asignación de recursos:**
+
+- Al conocer los perfiles de clientes, las campañas de marketing, soporte y cobranza pueden focalizarse y ser más rentables.
 
 ---
 
