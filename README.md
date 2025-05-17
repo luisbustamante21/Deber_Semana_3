@@ -157,7 +157,6 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 ---
 
 ## 6️⃣ Entorno de Trabajo
-```yaml
 Sistema Operativo: Windows 11
 Python: 3.8.12
 Librerías Principales:
