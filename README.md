@@ -94,8 +94,7 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 ## 📂 Estructura del Proyecto
 
 - `Archivos de datos/` - Dataset de clientes
-- `notebooks/` - Análisis exploratorio y clustering
-- `src/` - Funciones y módulos auxiliares
+- `Codigo Fuente (ipynb)/` - Análisis exploratorio y clustering
 - `visualizations/` - Gráficos generados con PCA y t-SNE
 - `README.md` - Documentación del proyecto
 
