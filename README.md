@@ -95,7 +95,7 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 
 - `Archivos de datos/` - Dataset de clientes
 - `Codigo Fuente (ipynb)/` - Análisis exploratorio y clustering
-- `visualizations/` - Gráficos generados con PCA y t-SNE
+- `Visualizaciones exportadas/` - Gráficos generados con PCA y t-SNE
 - `README.md` - Documentación del proyecto
 
 
