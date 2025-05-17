@@ -125,7 +125,7 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 
 - Incluir variables sociodemográficas, canal de contacto, historial de mora, etc., puede enriquecer aún más el análisis.
 
-** Optimizar la asignación de recursos:**
+**Optimizar la asignación de recursos:**
 
 - Al conocer los perfiles de clientes, las campañas de marketing, soporte y cobranza pueden focalizarse y ser más rentables.
 
