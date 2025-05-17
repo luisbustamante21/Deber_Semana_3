@@ -157,15 +157,18 @@ Dado que no se cuenta con etiquetas previas, se aplican técnicas de **clusterin
 ---
 
 ## 6️⃣ Entorno de Trabajo
-Sistema Operativo: Windows 11
-Python: 3.8.12
-Librerías Principales:
-  - pandas 1.3.5
-  - scikit-learn 1.0.2
-  - matplotlib 3.4.3
-Herramientas:
-  - Jupyter Notebook 6.4.7
-  - Git 2.25.1
+Sistema Operativo: Windows 11  
+Python: 3.8.12  
+
+### Librerías Principales  
+(puedes listar solo las más relevantes o todo en bloque)  
+- pandas 1.3.5  
+- scikit-learn 1.0.2  
+- matplotlib 3.4.3  
+
+### Requisitos completos
+
+Para ver todos los paquetes y versiones usados, revisa el archivo [requirements.txt](requirements.txt)
 
 
 ---
