@@ -172,4 +172,5 @@ Herramientas:
 
 ## 🔗 Links de Interés
 
-- 🎯 **Presentación de Diapositivas**: [Google Slides](https://docs.google.com/presentation/d/1OVkkPnO7M1RX9RnqtcDdVlekxcDUIeMl/edit?usp=sharing&ouid=105746497042844411325&rtpof=true&sd=true)
+- 🎯 **Presentación de Diapositivas**: [Ver en Google Slides](https://docs.google.com/presentation/d/1OVkkPnO7M1RX9RnqtcDdVlekxcDUIeMl/edit?usp=sharing&ouid=105746497042844411325&rtpof=true&sd=true)
+- 🎥 **Presentación en Video**: [Ver en Google Drive](https://drive.google.com/file/d/1CxYavUrC-Oxv8rdwEJcjzMq9boBdzCZw/view?usp=sharing)
