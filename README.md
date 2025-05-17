@@ -1,73 +1,108 @@
-Segmentación de Clientes de Tarjeta de Crédito
-1. Justificación y Análisis
-Este proyecto desarrolla un sistema de segmentación de clientes basado en su comportamiento con tarjetas de crédito, para optimizar estrategias de marketing y personalizar ofertas. La segmentación permite:
+# Segmentación de Clientes de Tarjeta de Crédito
 
-Identificar grupos homogéneos según nivel de gasto, frecuencia y uso de adelantos.
+![Badge en Desarrollo](https://img.shields.io/badge/Estado-✔%20Activo-brightgreen) 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0.2-orange)
 
-Definir campañas focalizadas que aumenten la efectividad y reduzcan la tasa de abandono (churn).
+Proyecto de análisis no supervisado para segmentar clientes de tarjetas de crédito mediante técnicas de clustering.
 
-Detectar patrones de pago y morosidad para gestionar riesgos crediticios.
+## 📌 Tabla de Contenidos
+1. [Justificación y Análisis](#-1-justificación-y-análisis)
+2. [Problema](#-2-introducción-del-problema)
+3. [Metodología](#-3-metodología-y-técnicas-aplicadas)
+4. [Resultados](#-4-análisis-comparativo-entre-modelos)
+5. [Conclusiones](#-5-conclusiones-y-recomendaciones)
+6. [Entorno](#-6-entorno-de-trabajo)
 
-Se emplea un Credit Card Dataset for Clustering con ~9,000 titulares activos y 18 variables recolectadas en 6 meses.
+---
 
-2. Introducción del Problema
-Los emisores necesitan segmentar clientes para:
+## 1️⃣ Justificación y Análisis
+El objetivo principal es desarrollar un sistema de segmentación basado en el comportamiento de uso de tarjetas de crédito para:
 
-Mejorar retención.
+- Identificar grupos homogéneos según:
+  - Nivel de gasto
+  - Frecuencia de compras 
+  - Uso de adelantos en efectivo
+- Optimizar estrategias de marketing
+- Gestionar riesgos crediticios
 
-Reducir costos de adquisición.
+**Dataset utilizado**:  
+`Credit Card Dataset for Clustering` con ~9,000 titulares activos y 18 variables comportamentales.
 
-Ajustar límites y condiciones crediticias acorde al riesgo.
+---
 
-El reto: extraer segmentos claros sin supervisión, manejando variables heterogéneas (montos, frecuencias, transacciones).
+## 2️⃣ Introducción del Problema
+Los emisores de tarjetas necesitan segmentación para:
 
-3. Metodología y Técnicas Aplicadas
-Preprocesamiento
-Imputación y tratamiento de outliers.
+✅ Mejorar retención de clientes  
+✅ Reducir costos de adquisición  
+✅ Ajustar límites de crédito según riesgo  
 
-Escalado con StandardScaler / MinMaxScaler.
+**Retos principales**:
+- Extraer segmentos accionables sin supervisión
+- Manejar variables con distintas escalas
 
-Análisis exploratorio y correlaciones.
+---
 
-Reducción de Dimensionalidad
-PCA para visualización y reducción de ruido.
+## 3️⃣ Metodología y Técnicas Aplicadas
 
-Modelos de Clustering
-K-Means: prueba k=2 a 8, evaluación con Inercia y Silhouette.
+### 🔧 Preprocesamiento
+- Imputación de valores faltantes
+- Tratamiento de outliers
+- Escalado de variables (`StandardScaler`/`MinMaxScaler`)
+- EDA y análisis de correlaciones
 
-t-SNE: reducción no lineal para visualización; clustering sobre el espacio embebido.
+### 📉 Reducción de Dimensionalidad
+- PCA para visualización y reducción de ruido
 
-DBSCAN: clusters de densidad variable, ajuste de eps y min_samples.
+### 🧩 Modelos de Clustering
+| Modelo  | Enfoque | Parámetros Clave |
+|---------|---------|------------------|
+| K-Means | Partición | k ∈ [2,8] (eval. por Inercia/Silhouette) |
+| t-SNE   | Reducción no lineal | `perplexity=30`, `learning_rate=200` |
+| DBSCAN  | Densidad | `eps=0.5`, `min_samples=5` |
 
-Validación
-Silhouette Score.
+### 📊 Validación
+- **Silhouette Score**: Cohesión y separación de clusters
+- **Davies-Bouldin Index**: Calidad de particionamiento
 
-Davies–Bouldin Index.
+---
 
-4. Resultados y Comparación de Modelos
-Modelo	Parámetros Clave	Silhouette Score	DB Index	Ventajas	Desventajas
-K-Means	k = 4	0.32	0.85	Rápido, fácil interpretación	Sensible a outliers, requiere k fijo
-t-SNE + Clustering	perplexity=30, lr=200	0.30	0.88	Captura relaciones no lineales	No es clustering directo, requiere método adicional
-DBSCAN	eps=0.5, min_samples=5	0.25	1.10	Detecta ruido y clusters libres	Difícil calibración en alta dimensión
-Jerárquico	Ward, 4 clusters	0.29	0.90	No requiere k previo, dendrograma	Costoso computacionalmente
+## 4️⃣ Análisis Comparativo entre Modelos
 
-5. Conclusiones y Recomendaciones
-K-Means (k=4) brinda el mejor balance entre cohesión y separación.
+| Modelo  | Silhouette | DB Index | Ventajas | Desventajas |
+|---------|------------|----------|----------|-------------|
+| K-Means | 0.32       | 0.85     | Rápido e interpretable | Sensible a outliers |
+| t-SNE*  | 0.30       | 0.88     | Captura no-linealidades | Requiere clustering adicional |
+| DBSCAN  | 0.25       | 1.10     | Detecta ruido | Difícil calibrar `eps` |
 
-Identificación de cuatro segmentos clave:
+*_t-SNE con clustering posterior_
 
-Clientes con alto gasto y pagos completos.
+---
 
-Usuarios moderados con pagos mínimos frecuentes.
+## 5️⃣ Conclusiones y Recomendaciones
 
-Clientes que utilizan adelantos en efectivo.
+### 🎯 Segmentos Identificados
+1. Alto gasto + pagos completos
+2. Uso moderado + pagos mínimos
+3. Alto uso de cash advance
+4. Bajo uso + pagos irregulares
 
-Bajo uso de tarjeta y pagos irregulares.
+### 💡 Recomendaciones
+- **Marketing**: Promociones segmentadas (ej: recompensas por cash advance)
+- **Riesgo**: Revisar límites para segmento 3
+- **Monitoreo**: Reevaluar trimestralmente con nuevos datos
 
-Recomendaciones:
+---
 
-Marketing personalizado para cada segmento (ej. incentivos para usuarios de adelantos).
-
-Revisión de límites y condiciones para segmentos de mayor riesgo.
-
-Reevaluar segmentos trimestralmente incorporando nuevos datos.
+## 6️⃣ Entorno de Trabajo
+```yaml
+Sistema Operativo: Ubuntu 20.04 LTS
+Python: 3.8.12
+Librerías Principales:
+  - pandas 1.3.5
+  - scikit-learn 1.0.2
+  - matplotlib 3.4.3
+Herramientas:
+  - Jupyter Notebook 6.4.7
+  - Git 2.25.1
