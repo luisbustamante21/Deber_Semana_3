@@ -161,7 +161,6 @@ Sistema Operativo: Windows 11
 Python: 3.8.12  
 
 ### Librerías Principales  
-(puedes listar solo las más relevantes o todo en bloque)  
 - pandas 1.3.5  
 - scikit-learn 1.0.2  
 - matplotlib 3.4.3  
